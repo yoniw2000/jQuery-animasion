@@ -1,0 +1,120 @@
+﻿ 
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> </title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+</head>
+
+    <body>
+         
+        <div id="content">
+            <button id="myBtn">animate </button>  
+            <select id="mySelect"></select> 
+            <input id="mySelectNum" type="number" id="tentacles" name="tentacles"
+                min="0" max="10000" value="0" step="500"  >                       
+            <h1 id="text" > animasion </h1> 
+                      
+        </div>
+
+        <script src="https://kit.fontawesome.com/717009c62e.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script>
+
+        $( document ).ready(function() {
+        console.log( "ready!" );
+                               
+        selectValues = ["bounce","puff","pulsate" ,"scale","shake","slide","highlight", "clip","slideUp","slideDown","finish","fadeTo and back","fadeOut","fadeIn","fadeToggle","slideToggle","hide","show","stop","toggle" ];
+        $.each(selectValues, function(key, value) {
+         $('#mySelect')
+          .append($('<option>', { value  })
+          .text(value));
+        });
+
+        $("#myBtn").click(function(){            
+            //$("#text").html($("#mySelect").val()); 
+            animate($("#mySelect").val() )           
+        }); 
+
+        function  animate(myStr )           
+        {    var myNum =  $("#mySelectNum").val()
+            switch(myStr) {
+            case  "toggle":
+                 $("#text").toggle(Number(myNum)); 
+                break;
+            case  "fadeIn":
+                    $("#text").fadeIn(Number(myNum)); 
+                    break;
+            case "fadeOut":
+                    $("#text").fadeOut(Number(myNum)); 
+                    break;
+            case "fadeToggle":
+                $("#text").fadeToggle(Number(myNum)); 
+                break;           
+            case "slideToggle":
+                $("#text").slideToggle(Number(myNum)); 
+                break;                             
+            case "stop":
+                $("#text").stop(Number(myNum)); 
+                break;                           
+            case "slideUp":
+                $("#text").slideUp(Number(myNum)); 
+                break;                    
+            case "slideDown":
+                $("#text").slideDown(Number(myNum)); 
+                break;                         
+            case "show":
+                $("#text").show(Number(myNum)); 
+                break;                       
+            case "hide":
+                $("#text").hide(Number(myNum)); 
+                break;              
+            case "finish":
+                $("#text").finish(); 
+                break;                        
+            case "fadeTo and back":
+                $("#text").fadeTo(Number(myNum), 0.2).delay(Number(myNum)).fadeTo(Number(myNum), 1); 
+                break;
+            case "clip":
+                $("#text").toggle( "clip" ,Number(myNum)); 
+                break;  
+            case "puff":
+                $("#text").toggle( "puff",Number(myNum) );
+                break; 
+            case "pulsate":
+                $("#text").toggle( "pulsate",Number(myNum) );
+                break; 
+            case "scale":
+                $("#text").toggle( "scale",Number(myNum) );
+                break; 
+            case "shake":
+                $("#text").toggle( "shake",Number(myNum) );
+                break;  
+            case "slide":
+                $("#text").toggle( "slide",Number(myNum) );
+                break; 
+            case "highlight":
+                $("#text").toggle( "highlight",Number(myNum) );
+                break;                 
+            default: 
+                $("#text").effect( "bounce", {times:3}, Number(myNum) );                
+            } 
+        } 
+           
+       //=============================== css ==================================    
+       $("#text").animate({fontSize: "120px" ,color: "rgb(0, 34, 102)" , "text-align" : "center"});
+        $("#content").animate({"font-size" : "120px"})
+         });
+        </script>
+
+
+    </body>
+</html>
+
